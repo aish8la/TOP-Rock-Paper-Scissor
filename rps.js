@@ -48,7 +48,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-let playerSelection = "rock";
-let computerSelection = getComputerChoice();
 
 
+function playGame() {
+  playerSelection = prompt("Type a weapon for rock paper scissors");
+  alert(playRound(playerSelection,getComputerChoice()));
+}
+
+playGame();

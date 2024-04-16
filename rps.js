@@ -87,12 +87,15 @@ const roundStatus = (status) => {
 
 function playGame() {
   playerSelection = prompt("Type a weapon for rock paper scissors");
+  playerSelectionLower = playerSelection.toLowerCase();
   if (playerSelection === null) {
     alert("Game Cancelled");
-  } else {
+  } else if (playerSelectionLower === "rock" ||
+            playerSelectionLower === "paper" ||
+            playerSelectionLower === "scissors") {
     alert(playRound(playerSelection,getComputerChoice()));
-    numberOfGames = numberOfGames + 1
-  }  
+    numberOfGames = numberOfGames + 1;
+  } else alert("Invalid Choice");
 }
 
 //funtion to record the current game status out of all the rounds
@@ -101,7 +104,7 @@ function currentGameStatus() {
     case (playerWins > computerWins):
       currentStatus = `Player Wins with ${playerWins} Wins in a total of ${numberOfGames} rounds.`;
       break;
-    case (playerWins <>> computerWins):
+    case (playerWins < computerWins):
       currentStatus = `Computer Wins with ${computerWins} Wins in a total of ${numberOfGames} rounds.`;
       break;
     case (playerWins === computerWins):
@@ -114,6 +117,12 @@ function currentGameStatus() {
 
 
 
-playGame();
+console.log(playGame());
+console.log(playGame());
+console.log(playGame());
+console.log(playGame());
+console.log(playGame());
 
-
+console.log(`Player Won ${playerWins} time and Lost ${playerLoss}time out of ${numberOfGames} Rounds.`);
+console.log(`Computer Won ${computerWins} time and Lost ${computerLoss}time out of ${numberOfGames} Rounds.`);
+console.log(currentStatus);

@@ -6,6 +6,7 @@ let playerLoss = 0;
 let computerLoss = 0;
 let ties = 0;
 let numberOfGames = 0;
+let currentStatus;
 
 //function that randomly choses from Rock, Paper or Scissor and returns them as a string
 function getComputerChoice() {
@@ -30,6 +31,7 @@ function playRound(playerSelection, computerSelection) {
     const winningMessage = `You win!! ${playerChoiceProperCase} beats ${computerSelection}.`;
     const losingMessage = `You lose!! ${computerSelection} beats ${playerChoiceProperCase}.`;
 
+// function for updating wins and loss
 const roundStatus = (status) => {
   if (status === "playerWin") {
     lastWin = "Player";
@@ -93,4 +95,25 @@ function playGame() {
   }  
 }
 
+//funtion to record the current game status out of all the rounds
+function currentGameStatus() {
+  switch (true) {
+    case (playerWins > computerWins):
+      currentStatus = `Player Wins with ${playerWins} Wins in a total of ${numberOfGames} rounds.`;
+      break;
+    case (playerWins <>> computerWins):
+      currentStatus = `Computer Wins with ${computerWins} Wins in a total of ${numberOfGames} rounds.`;
+      break;
+    case (playerWins === computerWins):
+      currentStatus = `Player is tied with the computer with ${playerWins} Wins and ${playerLoss} Loss out of ${numberOfGames} Rounds.`;
+      break;
+    default:
+      currentStatus = "";
+  }
+}
+
+
+
 playGame();
+
+

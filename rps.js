@@ -14,7 +14,7 @@ function getComputerChoice() {
 }
 
 // function to play game by taking two parameters
-function playGame(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     const playerChoiceLowerCase = playerSelection.toLowerCase();
     const computerChoiceLowerCase = computerSelection.toLowerCase();
 // generate proper case of player selection
@@ -51,6 +51,4 @@ function playGame(playerSelection, computerSelection) {
 let playerSelection = "rock";
 let computerSelection = getComputerChoice();
 
-console.log(playGame(playerSelection,computerSelection));
-console.log(`computer choice ${computerSelection}`);
 

@@ -1,4 +1,9 @@
-
+let lastWin;
+let lastLoss;
+let playerWins = 0;
+let computerWins = 0;
+let ties = 0;
+let numberOfGames = 0;
 
 //function that randomly choses from Rock, Paper or Scissor and returns them as a string
 function getComputerChoice() {
@@ -30,6 +35,7 @@ function playRound(playerSelection, computerSelection) {
       case "scissors":
 // checks if player choice and computer choice is same or not before proceeding
         if (playerChoiceLowerCase === computerChoiceLowerCase) {
+          ties = ties + 1;
           return "It's a tie!";
         } else if (playerChoiceLowerCase === "rock") {
           if (computerChoiceLowerCase === "scissors") {
@@ -52,7 +58,12 @@ function playRound(playerSelection, computerSelection) {
 
 function playGame() {
   playerSelection = prompt("Type a weapon for rock paper scissors");
-  alert(playRound(playerSelection,getComputerChoice()));
+  if (playerSelection === null) {
+    alert("Game Cancelled");
+  } else {
+    alert(playRound(playerSelection,getComputerChoice()));
+    numberOfGames = numberOfGames + 1
+  }  
 }
 
 playGame();

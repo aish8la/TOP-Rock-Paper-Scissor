@@ -90,8 +90,10 @@ function playGame() {
   if (playerSelection !== null) {
     playerSelectionLower = playerSelection.toLowerCase();
   }
+// Checks if the value is null and alerts that game is cancelled
   if (playerSelection === null) {
     alert("Game Cancelled");
+    // checks if entered value is valid
   } else if (playerSelectionLower === "rock" ||
             playerSelectionLower === "paper" ||
             playerSelectionLower === "scissors") {

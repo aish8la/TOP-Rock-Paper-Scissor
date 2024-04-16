@@ -1,12 +1,12 @@
-let lastWin;
-let lastLoss;
+let lastWin = "";
+let lastLoss = "";
 let playerWins = 0;
 let computerWins = 0;
 let playerLoss = 0;
 let computerLoss = 0;
 let ties = 0;
 let numberOfGames = 0;
-let currentStatus;
+let currentStatus = "";
 
 //function that randomly choses from Rock, Paper or Scissor and returns them as a string
 function getComputerChoice() {
@@ -36,13 +36,13 @@ const roundStatus = (status) => {
   if (status === "playerWin") {
     lastWin = "Player";
     lastLoss ="Computer";
-    computerLoss = computerLoss + 1;
-    playerWins = playerWins + 1;
+    computerLoss++;
+    playerWins++;
   } else if (status === "playerLose") {
     lastWin = "Computer";
     lastLoss ="Player";
-    playerLoss = playerLoss + 1;
-    computerWins = computerWins + 1;
+    playerLoss++;
+    computerWins++;
   }
 }
  
@@ -53,7 +53,7 @@ const roundStatus = (status) => {
       case "scissors":
 // checks if player choice and computer choice is same or not before proceeding
         if (playerChoiceLowerCase === computerChoiceLowerCase) {
-          ties = ties + 1;
+          ties++;
           return "It's a tie!";
         } else if (playerChoiceLowerCase === "rock") {
           if (computerChoiceLowerCase === "scissors") {
@@ -68,7 +68,7 @@ const roundStatus = (status) => {
             roundStatus("playerWin");
             return winningMessage;
           } else {
-            
+            roundStatus("playerLose");
             return losingMessage;
           }
         } else if (computerChoiceLowerCase === "paper") {
@@ -87,14 +87,16 @@ const roundStatus = (status) => {
 
 function playGame() {
   playerSelection = prompt("Type a weapon for rock paper scissors");
-  playerSelectionLower = playerSelection.toLowerCase();
+  if (playerSelection !== null) {
+    playerSelectionLower = playerSelection.toLowerCase();
+  }
   if (playerSelection === null) {
     alert("Game Cancelled");
   } else if (playerSelectionLower === "rock" ||
             playerSelectionLower === "paper" ||
             playerSelectionLower === "scissors") {
     alert(playRound(playerSelection,getComputerChoice()));
-    numberOfGames = numberOfGames + 1;
+    numberOfGames = ++numberOfGames;
   } else alert("Invalid Choice");
 }
 
@@ -102,10 +104,10 @@ function playGame() {
 function currentGameStatus() {
   switch (true) {
     case (playerWins > computerWins):
-      currentStatus = `Player Wins with ${playerWins} Wins in a total of ${numberOfGames} rounds.`;
+      currentStatus = `Player Wins with ${playerWins} Wins and ${ties} Ties in a total of ${numberOfGames} rounds.`;
       break;
     case (playerWins < computerWins):
-      currentStatus = `Computer Wins with ${computerWins} Wins in a total of ${numberOfGames} rounds.`;
+      currentStatus = `Computer Wins with ${computerWins} Wins and ${ties} Ties in a total of ${numberOfGames} rounds.`;
       break;
     case (playerWins === computerWins):
       currentStatus = `Player is tied with the computer with ${playerWins} Wins and ${playerLoss} Loss out of ${numberOfGames} Rounds.`;
@@ -122,7 +124,8 @@ console.log(playGame());
 console.log(playGame());
 console.log(playGame());
 console.log(playGame());
+currentGameStatus();
 
-console.log(`Player Won ${playerWins} time and Lost ${playerLoss}time out of ${numberOfGames} Rounds.`);
-console.log(`Computer Won ${computerWins} time and Lost ${computerLoss}time out of ${numberOfGames} Rounds.`);
+console.log(`Player Won ${playerWins} time and Lost ${playerLoss} time out of ${numberOfGames} Rounds.`);
+console.log(`Computer Won ${computerWins} time and Lost ${computerLoss} time out of ${numberOfGames} Rounds.`);
 console.log(currentStatus);

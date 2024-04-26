@@ -1,3 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
     box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    font-family: Roboto, monospace, sans-serif;
+    justify-content:center;
+    background-color: rgba(156, 145, 108, 0.852);
+    margin: 0;
+    min-height: 100vh;
+    align-items: center;
+}
+
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px rgb(109, 89, 0) solid;
+    background-color: rgba(166, 163, 100, 0.851);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    width: 100vh;
+}
+
+.title-section {
+    margin: 5px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.top-section,
+.results-container {
+    background-color: rgba(109, 136, 60, 0.838);
+    border: 2px black solid;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 5px;
+    margin: 5px; 
+    width: 90vh;
+}
+
+.message-box {
+    background-color: aliceblue;
+    border: 2px black solid;
+    margin: 20px 0px;
+    padding: 5px;
+    min-height: 50px;
+}
+
+.buttons-card {
+    display: flex;
+    justify-content:space-between;
+    padding: 10px 0px;
+    margin: 10px 0px;
+    gap: 15px;
+}
+
+.weapon-buttons {
+    background-color: aquamarine;
+    text-align: center;
+    font-size: 3vh;
+    font-weight: bold;
+    color: brown;
+    border-radius: 5px;
+    flex: 1;
+    padding: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.results-container {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    
+}
+
+.rounds,
+.final-results {
+    background-color: rgba(140, 98, 56, 0.723);
+    border: 2px black solid;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 5px;
+    margin: 5px 0px; 
+    min-height: 50vh;
+    flex: 1;
 }

@@ -33,11 +33,13 @@ const roundStatus = (status) => {
   if (status === "playerWin") {
     lastWin = "Player";
     lastLoss ="Computer";
+    lastTie ='';
     computerLoss++;
     playerWins++;
   } else if (status === "playerLose") {
     lastWin = "Computer";
     lastLoss ="Player";
+    lastTie = '';
     playerLoss++;
     computerWins++;
   }

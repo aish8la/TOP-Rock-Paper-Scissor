@@ -119,15 +119,3 @@ function currentGameStatus() {
   }
 }
 
-
-
-console.log(playGame());
-console.log(playGame());
-console.log(playGame());
-console.log(playGame());
-console.log(playGame());
-currentGameStatus();
-
-console.log(`Player Won ${playerWins} time and Lost ${playerLoss} time out of ${numberOfGames} Rounds.`);
-console.log(`Computer Won ${computerWins} time and Lost ${computerLoss} time out of ${numberOfGames} Rounds.`);
-console.log(currentStatus);

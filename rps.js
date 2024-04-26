@@ -21,16 +21,6 @@ function getComputerChoice() {
    }
 }
 
-// function to play game by taking two parameters
-function playRound(playerSelection, computerSelection) {
-    const playerChoiceLowerCase = playerSelection.toLowerCase();
-    const computerChoiceLowerCase = computerSelection.toLowerCase();
-// generate proper case of player selection
-    const playerChoiceProperCase = playerChoiceLowerCase.slice(0,1).toUpperCase() + playerChoiceLowerCase.slice(1);
-// winning and losing message
-    const winningMessage = `You win!! ${playerChoiceProperCase} beats ${computerSelection}.`;
-    const losingMessage = `You lose!! ${computerSelection} beats ${playerChoiceProperCase}.`;
-
 // function for updating wins and loss
 const roundStatus = (status) => {
   if (status === "playerWin") {
@@ -45,6 +35,17 @@ const roundStatus = (status) => {
     computerWins++;
   }
 }
+
+// function to play game by taking two parameters
+function playRound(playerSelection, computerSelection) {
+    const playerChoiceLowerCase = playerSelection.toLowerCase();
+    const computerChoiceLowerCase = computerSelection.toLowerCase();
+// generate proper case of player selection
+    const playerChoiceProperCase = playerChoiceLowerCase.slice(0,1).toUpperCase() + playerChoiceLowerCase.slice(1);
+// winning and losing message
+    const winningMessage = `You win!! ${playerChoiceProperCase} beats ${computerSelection}.`;
+    const losingMessage = `You lose!! ${computerSelection} beats ${playerChoiceProperCase}.`;
+
  
 // switch statement checks if the player choice is a valid choice and proceed with game if it is else returns a string saying that the choice is invalid
     switch (playerChoiceLowerCase) {

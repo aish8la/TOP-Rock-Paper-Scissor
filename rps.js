@@ -7,6 +7,11 @@ let computerLoss = 0;
 let ties = 0;
 let numberOfGames = 0;
 let currentStatus = "";
+let messageBox = document.querySelector('.message-box');
+let weaponButton = document.querySelector('.buttons-card');
+let finalMessage = document.querySelector('.final-results');
+let results = document.querySelector('.rounds');
+messageBox.textContent = 'Choose your weapon'
 
 //function that randomly choses from Rock, Paper or Scissor and returns them as a string
 function getComputerChoice() {
@@ -88,13 +93,13 @@ function playRound(playerSelection, computerSelection) {
 function currentGameStatus() {
   switch (true) {
     case (playerWins > computerWins):
-      currentStatus = `Player Wins with ${playerWins} Wins and ${ties} Ties in a total of ${numberOfGames} rounds.`;
+      currentStatus = `Player Wins with ${playerWins} Wins, ${playerLoss} Loss and ${ties} Ties in a total of ${numberOfGames} rounds.`;
       break;
     case (playerWins < computerWins):
-      currentStatus = `Computer Wins with ${computerWins} Wins and ${ties} Ties in a total of ${numberOfGames} rounds.`;
+      currentStatus = `Computer Wins with ${computerWins} Wins, ${computerLoss} Loss and ${ties} Ties in a total of ${numberOfGames} rounds.`;
       break;
     case (playerWins === computerWins):
-      currentStatus = `Player is tied with the computer with ${playerWins} Wins and ${playerLoss} Loss out of ${numberOfGames} Rounds.`;
+      currentStatus = `Player is tied with the computer with ${playerWins} Wins, ${playerLoss} Loss and ${ties} Ties out of ${numberOfGames} Rounds.`;
       break;
     default:
       currentStatus = "";
@@ -102,14 +107,21 @@ function currentGameStatus() {
 }
 
 
-let weaponButton = document.querySelector('.buttons-card');
 
 weaponButton.addEventListener('click', (event)=> {
   let target = event.target;
-  currentGameStatus();
-  console.log(playRound(target.id, getComputerChoice()));
-  console.log(target.id);
-  console.log(currentStatus);
 
+  if ((target.id === 'rock'
+  || target.id === 'paper'
+  || target.id === 'scissors')
+  && numberOfGames < 5) {
+    let roundResult = playRound(target.id, getComputerChoice());
+    messageBox.textContent = roundResult;
+    numberOfGames++;  
+  } else if (numberOfGames >=5) {
+    messageBox.textContent = 'Reset the page to restart the game';
+    currentGameStatus();
+    finalMessage.textContent = currentStatus;
+  }
 });
 

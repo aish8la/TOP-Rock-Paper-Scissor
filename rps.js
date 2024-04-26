@@ -84,8 +84,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
-
 //funtion to record the current game status out of all the rounds
 function currentGameStatus() {
   switch (true) {
@@ -102,4 +100,16 @@ function currentGameStatus() {
       currentStatus = "";
   }
 }
+
+
+let weaponButton = document.querySelector('.buttons-card');
+
+weaponButton.addEventListener('click', (event)=> {
+  let target = event.target;
+  currentGameStatus();
+  console.log(playRound(target.id, getComputerChoice()));
+  console.log(target.id);
+  console.log(currentStatus);
+
+});
 

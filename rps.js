@@ -1,5 +1,6 @@
 let lastWin = "";
 let lastLoss = "";
+let lastTie = '';
 let playerWins = 0;
 let computerWins = 0;
 let playerLoss = 0;
@@ -7,11 +8,12 @@ let computerLoss = 0;
 let ties = 0;
 let numberOfGames = 0;
 let currentStatus = "";
-let messageBox = document.querySelector('.message-box');
-let weaponButton = document.querySelector('.buttons-card');
-let finalMessage = document.querySelector('.final-results');
-let results = document.querySelector('.rounds');
-messageBox.textContent = 'Choose your weapon'
+const messageBox = document.querySelector('.message-box');
+const weaponButton = document.querySelector('.buttons-card');
+const finalMessage = document.querySelector('.final-results');
+const results = document.querySelector('.rounds');
+const resultList = document.querySelector('.list-of-rounds');
+messageBox.textContent = 'Choose your weapon';
 
 //function that randomly choses from Rock, Paper or Scissor and returns them as a string
 function getComputerChoice() {
@@ -60,6 +62,8 @@ function playRound(playerSelection, computerSelection) {
 // checks if player choice and computer choice is same or not before proceeding
         if (playerChoiceLowerCase === computerChoiceLowerCase) {
           ties++;
+          lastTie = "Tied";
+          lastWin = lastLoss = '-';
           return "It's a tie!";
         } else if (playerChoiceLowerCase === "rock") {
           if (computerChoiceLowerCase === "scissors") {
@@ -106,6 +110,12 @@ function currentGameStatus() {
   }
 }
 
+function addRoundsList() {
+  const roundListItem = document.createElement('li');
+  roundListItem.textContent = `Round ${numberOfGames}: Winner: ${lastWin}, Loser: ${lastLoss}, ${lastTie}.`;
+  resultList.appendChild(roundListItem);
+}
+
 
 
 weaponButton.addEventListener('click', (event)=> {
@@ -117,7 +127,8 @@ weaponButton.addEventListener('click', (event)=> {
   && numberOfGames < 5) {
     let roundResult = playRound(target.id, getComputerChoice());
     messageBox.textContent = roundResult;
-    numberOfGames++;  
+    numberOfGames++;
+    addRoundsList();
   } else if (numberOfGames >=5) {
     messageBox.textContent = 'Reset the page to restart the game';
     currentGameStatus();

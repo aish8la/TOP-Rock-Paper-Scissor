@@ -26,6 +26,7 @@ body {
     background-color: rgba(166, 163, 100, 0.851);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     width: 100vh;
+    margin: 20px;
 }
 
 .title-section {

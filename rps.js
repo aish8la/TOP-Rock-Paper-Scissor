@@ -86,23 +86,6 @@ function playRound(playerSelection, computerSelection) {
 
 
 
-function playGame() {
-  playerSelection = prompt("Type a weapon for rock paper scissors");
-  if (playerSelection !== null) {
-    playerSelectionLower = playerSelection.toLowerCase();
-  }
-// Checks if the value is null and alerts that game is cancelled
-  if (playerSelection === null) {
-    alert("Game Cancelled");
-    // checks if entered value is valid
-  } else if (playerSelectionLower === "rock" ||
-            playerSelectionLower === "paper" ||
-            playerSelectionLower === "scissors") {
-    alert(playRound(playerSelection,getComputerChoice()));
-    numberOfGames = ++numberOfGames;
-  } else alert("Invalid Choice");
-}
-
 //funtion to record the current game status out of all the rounds
 function currentGameStatus() {
   switch (true) {

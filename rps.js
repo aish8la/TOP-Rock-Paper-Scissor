@@ -129,7 +129,8 @@ weaponButton.addEventListener('click', (event)=> {
     messageBox.textContent = roundResult;
     numberOfGames++;
     addRoundsList();
-  } else if (numberOfGames >=5) {
+  } 
+  if (numberOfGames >=5) {
     messageBox.textContent = 'Reset the page to restart the game';
     currentGameStatus();
     finalMessage.textContent = currentStatus;

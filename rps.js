@@ -12,7 +12,10 @@ const messageBox = document.querySelector('.message-box');
 const weaponButton = document.querySelector('.buttons-card');
 const finalMessage = document.querySelector('.final-results');
 const results = document.querySelector('.rounds');
-const resultList = document.querySelector('.list-of-rounds');
+const playerWinCounter = document.querySelector('.player-wins');
+const ComputerWinCounter = document.querySelector('.computer-wins');
+const tieCounter = document.querySelector('.ties');
+const roundCounter = document.querySelector('.round-count');
 messageBox.textContent = 'Choose your weapon';
 
 //function that randomly choses from Rock, Paper or Scissor and returns them as a string
@@ -113,9 +116,11 @@ function currentGameStatus() {
 }
 
 function addRoundsList() {
-  const roundListItem = document.createElement('li');
-  roundListItem.textContent = `Round ${numberOfGames}: Winner: ${lastWin}, Loser: ${lastLoss}, ${lastTie}.`;
-  resultList.appendChild(roundListItem);
+  roundCounter.textContent = `Number of Rounds: ${numberOfGames}`;
+  ComputerWinCounter.textContent = `Computer Wins: ${computerWins}`;
+  playerWinCounter.textContent = `Player Wins: ${playerWins}`;
+  tieCounter.textContent = `Number of Ties: ${ties}`;
+
 }
 
 
@@ -126,13 +131,15 @@ weaponButton.addEventListener('click', (event)=> {
   if ((target.id === 'rock'
   || target.id === 'paper'
   || target.id === 'scissors')
-  && numberOfGames < 5) {
+  && (playerWins < 5
+  && computerWins < 5)) {
     let roundResult = playRound(target.id, getComputerChoice());
     messageBox.textContent = roundResult;
     numberOfGames++;
     addRoundsList();
   } 
-  if (numberOfGames >=5) {
+  if ((playerWins >= 5
+    || computerWins >= 5)) {
     messageBox.textContent = 'Reset the page to restart the game';
     currentGameStatus();
     finalMessage.textContent = currentStatus;

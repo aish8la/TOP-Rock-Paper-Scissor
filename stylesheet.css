@@ -94,3 +94,7 @@ body {
     min-height: 50vh;
     flex: 1;
 }
+
+.list-of-rounds {
+    list-style-type: none;
+}
